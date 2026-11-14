@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+  <title>Sutemi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <linearGradient id="brandGlassFill" x1="15%" y1="10%" x2="85%" y2="90%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+              <stop offset="50%" stop-color="#dbeaff" stop-opacity="0.14"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+            </linearGradient>
+            <linearGradient id="brandGlassStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="45%" stop-color="#cfe6ff"/>
+              <stop offset="80%" stop-color="#e3d4ff"/>
+              <stop offset="100%" stop-color="#aef7ea"/>
+            </linearGradient>
+            <linearGradient id="brandCrownFill" x1="20%" y1="0%" x2="80%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="65%" stop-color="#e6f0ff"/>
+              <stop offset="100%" stop-color="#c3f7ec"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 9 L83 22 V48 C83 69 68 83 50 91 C32 83 17 69 17 48 V22 Z"
+                fill="url(#brandGlassFill)"
+                stroke="url(#brandGlassStroke)"
+                stroke-width="4.2"
+                stroke-linejoin="round"/>
+          <path d="M24 26 Q50 16 76 26"
+                fill="none"
+                stroke="#ffffff"
+                stroke-opacity="0.62"
+                stroke-width="2.2"
+                stroke-linecap="round"/>
+          <path d="M31 58 L35 37 L44 46 L50 31 L56 46 L65 37 L69 58 Z"
+                fill="url(#brandCrownFill)"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linejoin="round"/>
+          <rect x="33" y="63" width="34" height="5" rx="2.5" fill="url(#brandCrownFill)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">SUTEMI</div>
+        <div class="brand-sub">PRIVATE CONNECTION</div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="engine-pill" id="enginePill">
+        <i id="engineDot"></i>
+        <span id="engineText">Starting engine&hellip;</span>
+      </div>
+      <button class="chip-btn icon-only" id="openSettingsBtn" title="Settings and Diagnostics" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="overline">YOUR PRIVATE NETWORK</div>
+      <h1 id="headline">Not connected</h1>
+      <p id="subheadline">Select a server and start a secure connection</p>
+
+      <div class="connect-area" id="connectArea">
+        <div class="btn-stage">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="spin-ring"></div>
+          <button class="connect-btn" id="connectBtn" aria-label="Connect">
+            <svg class="power-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M12 2v10"/>
+              <path d="M6.2 5.8a9 9 0 1 0 11.6 0"/>
+            </svg>
+          </button>
+        </div>
+        <div class="connect-caption" id="connectCaption">CONNECT</div>
+      </div>
+    </section>
+
+    <section class="server-card" id="openServers" tabindex="0" role="button">
+      <div class="server-left">
+        <div class="country-badge" id="serverFlag">WW</div>
+        <div class="server-copy">
+          <div class="mini-label">SELECTED SERVER</div>
+          <strong id="serverTitle">No servers added</strong>
+          <span id="serverMeta">Click to paste a link or load built-in free servers</span>
+        </div>
+      </div>
+      <div class="server-metrics">
+        <div class="ping-metric-wrap">
+          <div class="ping-label-row">
+            <span class="mini-label">PING</span>
+            <button class="mini-ping-btn" id="cardPingBtn" type="button" title="Test selected profile latency (Ctrl+Shift+S)" aria-label="Test latency">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-3.2-6.9"/>
+                <polyline points="21 3 21 8 16 8"/>
+              </svg>
+            </button>
+          </div>
+          <strong id="pingValue">&mdash; <small>ms</small></strong>
+        </div>
+        <div>
+          <span class="mini-label">&darr; DOWN</span>
+          <strong id="downValue">0 <small>KB/s</small></strong>
+        </div>
+        <div>
+          <span class="mini-label">&uarr; UP</span>
+          <strong id="upValue">0 <small>KB/s</small></strong>
+        </div>
+      </div>
+      <span class="chevron">&rsaquo;</span>
+    </section>
+
+    <section class="mode-wrap">
+      <div class="mode-title">CONNECTION MODE</div>
+      <div class="mode-switch">
+        <button class="mode active" data-mode="proxy" type="button">
+          <span>&#9672;</span>
+          <span class="mode-label">System Proxy (no admin needed)</span>
+        </button>
+        <button class="mode" data-mode="tun" type="button">
+          <span>&#9678;</span>
+          <span class="mode-label">TUN Mode (entire PC)</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="ai-bar" id="aiBar">
+      <div class="ai-bar-info">
+        <span class="ai-exit-pill" id="aiExitBadge">EXIT: &mdash;</span>
+        <span class="ai-speed-pill" id="aiSpeedBadge" hidden>0 Mbps</span>
+        <div class="ai-chips">
+          <span class="ai-chip" id="aiChipGemini"><i></i>Gemini</span>
+          <span class="ai-chip" id="aiChipStudio"><i></i>AI Studio</span>
+          <span class="ai-chip" id="aiChipGpt"><i></i>ChatGPT</span>
+          <span class="ai-chip" id="aiChipClaude"><i></i>Claude</span>
+        </div>
+      </div>
+      <button class="soft-btn small" id="checkAiBtn" type="button" title="Verify real exit IP, download speed, and Gemini / AI Studio / ChatGPT / Claude access through the active tunnel">Check AI &amp; Speed</button>
+    </section>
+
+    <div class="notice" id="notice" role="status"></div>
+  </main>
+
+  <footer>
+    <span>SUTEMI <b>v1.0.0</b></span>
+    <span id="footerInfo">LOCAL ENGINE &middot; WINDOWS</span>
+  </footer>
+</div>
+
+<div class="modal-backdrop" id="serverModal">
+  <section class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="overline">SERVERS &amp; SUBSCRIPTIONS</div>
+        <h2>Servers</h2>
+      </div>
+      <button class="icon-btn" id="closeServersBtn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="import-bar">
+      <input type="text" id="importInput" class="text-input" placeholder="Paste vless://, ss://, hy2:// or subscription URL...">
+      <button class="primary-btn" id="importSubmitBtn" type="button">Add</button>
+      <button class="soft-btn" id="pasteBtn" type="button">Paste from clipboard</button>
+    </div>
+
+    <div class="modal-actions">
+      <button class="accent-btn" id="toggleBuiltinBtn" type="button">&#9889; Built-in Free Servers</button>
+      <button class="soft-btn ping-all-btn" id="pingBtn" type="button">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        <span id="pingBtnLabel">Ping all</span>
+      </button>
+      <button class="soft-btn" id="speedTestBtn" type="button" title="Test real exit IP, real country and download/upload Mbps on selected servers (or top 12 fastest)">&#9881; Speed &amp; IP</button>
+      <button class="soft-btn" id="bestBtn" type="button" title="Find and verify a real working EU/US server suitable for Gemini, AI Studio, ChatGPT &amp; Claude">&#10022; Auto AI Fastest</button>
+      <button class="soft-btn" id="updateSubsBtn" type="button">&#8635; Update subs</button>
+      <button class="soft-btn danger-text" id="cleanDeadBtn" type="button" title="Remove dead profiles and profiles with latency > 120 ms">Remove dead &amp; &gt;120ms</button>
+    </div>
+
+    <div class="builtin-panel" id="builtinPanel">
+      <div class="builtin-head builtin-head-row">
+        <span>Curated open-source GitHub collections:</span>
+        <label class="smart-toggle" title="Pre-filter massive subscriptions in Node.js: removes 10k dead/junk &amp; RU/BY/CN/HK/IR nodes, keeps top 120 TCP-alive EU/US AI-ready nodes">
+          <input type="checkbox" id="smartFilterToggle" class="row-check" checked>
+          <span>Smart Filter (Top 120 AI-Ready, no RU/CN/BY)</span>
+        </label>
+      </div>
+      <div class="builtin-grid" id="builtinGrid"></div>
+    </div>
+
+    <div class="scan-banner" id="scanBanner" aria-live="polite">
+      <div class="scan-banner-top">
+        <div class="scan-status">
+          <span class="scan-spinner" aria-hidden="true"></span>
+          <span id="scanText">Scanning servers...</span>
+        </div>
+        <div class="scan-meta">
+          <span class="scan-stats" id="scanStats">0 / 0</span>
+          <button class="soft-btn small danger-text" id="cancelPingBtn" type="button">Stop</button>
+        </div>
+      </div>
+      <div class="scan-track" id="scanTrack">
+        <progress class="scan-progress" id="scanProgress" max="100" value="0"></progress>
+        <div class="scan-shimmer"></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="group-tabs" id="groupTabs"></div>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search (NL, DE, PL, VLESS...)">
+    </div>
+
+    <div class="bulk-bar" id="bulkBar">
+      <div class="bulk-left">
+        <button class="soft-btn small" id="selectAllBtn" type="button">Select all</button>
+        <button class="soft-btn small" id="clearSelectBtn" type="button" hidden>Clear selection</button>
+        <span class="bulk-info" id="bulkInfo">Shift+Click for range select</span>
+      </div>
+      <button class="soft-btn small danger-text" id="deleteSelectedBtn" type="button" hidden>Delete selected (0)</button>
+    </div>
+
+    <div class="server-list" id="serverList">
+      <div class="empty">Loading profiles&hellip;</div>
+    </div>
+
+    <div class="modal-foot">
+      <span id="profileCount">0 servers</span>
+      <div class="modal-foot-actions">
+        <button class="soft-btn danger-text" id="deleteGroupBtn" type="button" hidden>Delete group</button>
+        <button class="soft-btn" id="refreshBtn" type="button">Refresh list</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal-backdrop" id="settingsModal">
+  <section class="modal modal-sm">
+    <div class="modal-head">
+      <div>
+        <div class="overline">SYSTEM &amp; DIAGNOSTICS</div>
+        <h2>Settings &amp; Diagnostics</h2>
+      </div>
+      <button class="icon-btn" id="closeSettingsBtn" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="settings-grid">
+      <div class="setting-row">
+        <div>
+          <strong>Sutemi local proxy endpoint</strong>
+          <span id="proxyEndpointText">127.0.0.1:2080</span>
+        </div>
+        <span class="pill-tag" id="winProxyStateText">OFF</span>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <strong>Sutemi engine version</strong>
+          <span id="engineVersionText">-</span>
+        </div>
+        <button class="soft-btn" id="restartEngineBtn" type="button">Restart engine</button>
+      </div>
+    </div>
+
+    <div class="logs-head">
+      <span class="mini-label">RECENT ENGINE EVENTS</span>
+      <button class="soft-btn small" id="refreshLogsBtn" type="button">Refresh log</button>
+    </div>
+    <pre class="logs-box" id="logsBox">No logs yet</pre>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="renderer.js"></script>
+</body>
+</html>
