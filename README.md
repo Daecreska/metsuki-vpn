@@ -1,4 +1,4 @@
-# Throne UI
+# Metsuki
 
 A modern, minimalist Electron shell for the official Throne headless engine.
 
